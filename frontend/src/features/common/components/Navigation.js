@@ -7,12 +7,12 @@ export default function Navigation(){
     return(<Nav>
 <NavList>
     <NavtItem><Link to="/home">Home</Link></NavtItem>
-    <NavtItem><Link to="/user_add">UserAdd</Link></NavtItem>
-    <NavtItem><Link to="/user_login">UserLogin</Link></NavtItem>
-    <NavtItem><Link to="/user_detail">UserDetail</Link></NavtItem>
-    <NavtItem><Link to="/user_list">UserList</Link></NavtItem>
-    <NavtItem><Link to="/user_modify">UserModify</Link></NavtItem>
-    <NavtItem><Link to="/user_remove">UserRemove</Link></NavtItem>
+    <NavtItem><Link to="/users/add">UserAdd</Link></NavtItem>
+    <NavtItem><Link to="/users/login">UserLogin</Link></NavtItem>
+    <NavtItem><Link to="/users/detail">UserDetail</Link></NavtItem>
+    <NavtItem><Link to="/users/list">UserList</Link></NavtItem>
+    <NavtItem><Link to="/users/modify">UserModify</Link></NavtItem>
+    <NavtItem><Link to="/users/remove">UserRemove</Link></NavtItem>
 </NavList>
 </Nav>
 )}

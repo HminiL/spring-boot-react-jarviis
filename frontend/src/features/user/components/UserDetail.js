@@ -1,66 +1,64 @@
-import React from 'react'
+import axios from 'axios'
+import React,{useState, useEffect, useCallback } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 
 export default function UserDetail(){
+    
+    const SERVER = 'http://localhost:8080'
+    const history = useHistory()
+    const [ detail, setDetail ] = useState({})
+    
+    const fetchOne = () => {
+        const sessionUser = JSON.parse(localStorage.getItem('sessionUser')); 
+        alert('사용자 아이디 : '+sessionUser.userId)
+        axios.get(`${SERVER}/users/${sessionUser.userId}`)
+        .then(res => {
+            setDetail(res.data)
+        })
+        .catch(err => {
+            alert(`Detail 오류!! : ${err}`)
+        })
+    }
+    useEffect(() => {
+        fetchOne()
+    }, [])
+
   
   return(
     <div>
-    <figure>
-        <figcaption>오늘은 남은인생이 시작되는 첫째날</figcaption>
-    </figure>
-    <h1>hyemin Lee</h1>
-    <p>email : </p>
-    <h2>Who am I?</h2>
-    <p>와왕와왕</p>
-    <h2>Github</h2>
-    <ul>
-        <li>
-            <a href="#">Github</a>
-        </li>
-    </ul>
-    <h2>Skils</h2>
-    <ul>
-        <li>사용언어
-            <ul>
-                <li><mark>HTML</mark></li>
-                <li><mark>CSS</mark></li>
-                <li>JAVA</li>
-            </ul>
-        </li>
-        <li>사용툴
-            <ul>
-                <li>IntelliJ</li>
-                <li>Spring Boot</li>
-                <li>sql Developer</li>
-                <li><b>Visual Studio</b></li>
-            </ul>
-        </li>
-    </ul>
+    <h1>회원 정보</h1>
+   <ul>
+   <li>
+           <label>
+               <span>회원번호 : {detail.userId}</span>
+           </label>
+       </li>
+       <li>
+           <label>
+               <span>아이디 : {detail.username}</span>
+           </label>
+       </li>
+       <li>
+           <label>
+               <span> 이메일 : {detail.email}</span>
+           </label>
+       </li>
+       <li>
+           <label>
+               <span>비밀번호 : ****** </span>
+           </label>
+       </li>
+       <li>
+           <label>
+                <span>이름 : {detail.name}</span>
+           </label>
+       </li>
+      
+       <li>
+           <input type="button" value="회원정보 수정"/>
+       </li>
 
-    <h2>Academic</h2>
-    <table border="1">
-        <caption>학력사항</caption>
-        <thead>
-            <tr>
-                <th>출신학교</th>
-                <th>전공</th>
-                <th>기간</th>
-                <th>졸업구분</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <td>oo고등학교</td>
-                <td>...</td>
-                <td>12</td>
-                <td>졸업</td>
-            </tr>
-            <tr>
-                <td>ㅇㅇ대학교</td>
-                <td>ㅁㅁㅁㅁ</td>
-                <td>33</td>
-                <td>졸업</td>
-            </tr>
-        </tfoot>
-    </table>
-    </div>)}
+   </ul>
+    </div>
+  )}
     
