@@ -1,10 +1,10 @@
-import axios from 'axios';
+
 import React, { useState } from 'react';
 import { useHistory  } from 'react-router-dom';
 
 
 export default function UserAdd() {
-    const SERVER = 'http://localhost:8080'
+    
     const history = useHistory()
     const [join, setJoin] = useState({
       username:'', password:'', email:'', name:'', regDate: new Date().toLocaleDateString()
@@ -18,12 +18,8 @@ export default function UserAdd() {
         })
     }
   
-    const userJoin = joinRequest => 
-              axios.post(`${SERVER}/users`, JSON.stringify(joinRequest),{headers})
-    const headers = {
-      'Content-Type' : 'application/json',
-      'Authorization': 'JWT fefege..'
-    }
+    
+    
     const handleSubmit = e => {
         e.preventDefault()
         const joinRequest = {...join}

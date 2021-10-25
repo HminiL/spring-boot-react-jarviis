@@ -1,17 +1,15 @@
-import axios from 'axios'
+
 import React,{useState, useEffect, useCallback } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 
 export default function UserDetail(){
-    
-    const SERVER = 'http://localhost:8080'
+
     const history = useHistory()
     const [ detail, setDetail ] = useState({})
     
     const fetchOne = () => {
         const sessionUser = JSON.parse(localStorage.getItem('sessionUser')); 
-        alert('사용자 아이디 : '+sessionUser.userId)
-        axios.get(`${SERVER}/users/${sessionUser.userId}`)
+        userFatchOne(sessionUser)
         .then(res => {
             setDetail(res.data)
         })
