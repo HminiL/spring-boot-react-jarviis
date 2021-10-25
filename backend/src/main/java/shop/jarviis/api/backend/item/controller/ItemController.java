@@ -2,6 +2,7 @@ package shop.jarviis.api.backend.item.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import shop.jarviis.api.backend.common.CommonController;
 import shop.jarviis.api.backend.item.domain.Item;
@@ -13,6 +14,7 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/items")
 public class ItemController implements CommonController<Item, Long> {
     private final ItemService itemService;
     private final ItemRepository itemRepository;

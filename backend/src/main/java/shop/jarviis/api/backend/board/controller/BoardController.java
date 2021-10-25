@@ -2,6 +2,7 @@ package shop.jarviis.api.backend.board.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import shop.jarviis.api.backend.board.domain.Article;
 import shop.jarviis.api.backend.board.repository.BoardRepository;
@@ -13,6 +14,7 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/articles")
 public class BoardController implements CommonController<Article, Long> {
     private final BoardService boardService;
     private final BoardRepository boardRepository;
